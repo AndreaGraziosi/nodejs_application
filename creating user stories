@@ -24,3 +24,38 @@ URL	HTTP Verb	Action	What it Does
 /reviews/:id/edit	GET	edit	See an edit review form
 /reviews/:id	PATCH/PUT	update	Update a review
 /reviews/:id	DELETE	destroy	Delete a review
+
+=====================
+Database! Mongo!!
+
+transmit data as json
+Mongo DB allows you to save JS objects or Json as key value pairs.
+--document based database!!
+collection od reviews is a bunch of review style documents.
+========================
+server =node.js
+web framework = Express.js
+MongoDB ODM= Mongoose
+data is represented as Java script objects BUT we can only save
+it as Mongo DB documents 
+ ODM object document mapper  map our JSobjects to MongoDB objects
+---
+
+In order to write and read data from your MongoDB database 
+with Mongoose, you need to use what is called a Model 
+The model is the Data Layer 
+
+soo wrting the routes:
+Review.find()
+      .then(reviews => {
+        res.render('reviews-index', { reviews: reviews });
+      })
+        .catch(err => {});
+
+
+      Review= mane of the model
+      .find() returns a promise...(a value that will ne provided 
+      in the future)
+      .then() when data comes back from the database , 
+      provides a function
+      .catch() in case promise id rejected

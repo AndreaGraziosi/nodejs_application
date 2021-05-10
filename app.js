@@ -1,7 +1,14 @@
 // getiing started
 const express = require('express')
 const app = express()
-//******************** */
+// initialize mongoose
+const mongoose = require('mongoose');
+mongoose.connect('mongodb://localhost/nodejs_application', { useNewUrlParser: true }, { useUnifiedTopology: true });
+// Model
+const Review = mongoose.model('Review', {
+    title: String,
+    movieTitle: String
+  });
 
 // install express-handlebars 
 var exphbs = require('express-handlebars');
@@ -14,25 +21,21 @@ app.set('view engine', 'handlebars');
 
 //Routes!!
 
-// app.get('/', (req, res) => {
-//   res.send('Hello World!')
-// })
-
-app.get('/', (req, res) => {
-    res.render('home', { msg: 'Handlebars are Cool!' });
-  })
 
 
-// OUR MOCK ARRAY OF PROJECTS
-let reviews = [
-    { Giftitle: "Great Review", movieTitle: "Batman II" },
-    { Giftitle: "Awesome Movie", movieTitle: "Titanic" }
-  ]
+
   
   // INDEX
   app.get('/', (req, res) => {
-    res.render('reviews-index', { reviews: reviews });
+    Review.find()
+      .then(reviews => {
+        res.render('reviews-index', { reviews: reviews });
+      })
+      .catch(err => {
+        console.log(err);
+      })
   })
+  
   
 
 

@@ -20,4 +20,27 @@ In body section of template use: {{{body}}}
 *******************
 Now make home.handlebars (the "/" root page)
 *********************
+================
+ADDING MONGO!!!!!
+================
+$ brew update
+$ npm install mongodb
+
+create the data folder and bd folder inside it
+==========================================
+--$mongod to start the database
+$ show db 
+$ use <database name here>-db 
+$ show collections
+$db.<name>.find()
+==================================
+
+configure express to write 
+to MongoDB using the npm library mongoose.
+npm install mongoose --save
+
+Now initialize mongoose in app.js and connect to our database 
+that we'll name after our app.
+
+
 
