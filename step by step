@@ -1,0 +1,23 @@
+brew install node
+cd our file
+$ npm init
+****************
+$ npm install express --save
+$ touch app.js
+******************
+add Express.js code to app.js
+*************
+$ npm install nodemon -g
+$ nodemon app.js
+**
+add app.js to package.json
+*************
+npm install express-handlebars --save
+*************
+add express hadlebars to app.js 
+make views--layouts--main.hadlebars
+In body section of template use: {{{body}}}
+*******************
+Now make home.handlebars (the "/" root page)
+*********************
+

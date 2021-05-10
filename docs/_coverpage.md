@@ -9,7 +9,7 @@
 - Use as a guide to plan your practice
 
 ## [GitHub](https://github.com/AndreaGraziosi/nodejs_application.git)
-## [Get Started](#docsify)
+## [Visit the Site](#docsify)
 
 <!-- background image -->
 

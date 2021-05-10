@@ -13,9 +13,9 @@
 
 
 ### Built with:
-``` Node.js  | handlebars  | MongoDB | TDD/BDD approach to Mocha Chai Testing | RESTful API ```
+``` Node.js  | handlebars  | MongoDB | TDD/BDD  Mocha Chai Testing | RESTful API ```
 
- [This amazing API! check out the repo](https://github.com/pmyjavec/asana.git) 
+ [This amazing API! Check out the repo](https://github.com/pmyjavec/asana.git) 
 ### Languages:
 ```
 JavaScript, HTML, CSS, Bootstrap and Documented with Docsify!
