@@ -17,7 +17,7 @@ Users can comment on reviews (comments#create)
 Users can delete comments on reviews (comments#destroy)
 
 URL	HTTP Verb	Action	What it Does
-/reviews	GET	index	See all reviews
+/	GET	index	See all reviews
 /reviews/new	GET	new	See new review form
 /reviews	POST	create	Create a new review
 /reviews/:id	GET	show	See one review
@@ -59,3 +59,46 @@ Review.find()
       .then() when data comes back from the database , 
       provides a function
       .catch() in case promise id rejected
+
+      Resourceful and RESTful architecture to our 
+      MVC structured app--(MVC or the Model View Controller 
+      architecture of web server development.)
+
+=====================================
+making a create Action
+make a route to reviews/new and have it render a template
+
+app.get('/reviews/new', (req, res) => {
+  res.render('reviews-new', {});
+})
+
+Make the form and add a method POST and a action "/reviews"
+
+now we need a route that detects posts requests to that path:
+ /reviews
+
+ app.post('/reviews', (req, res) => {
+  console.log(req.body);
+  // res.render('reviews-new', {});
+})
+==========================================
+ instead of body parser now we need express....
+in app.js
+
+Body parser gives us: req object called req.body AND 
+it contains the FORM DATA
+
+use that form data to save a new review to our 
+MongoDB database using our Review model
+use the method provided to us by Mongoose called create()
+
+re write:
+// CREATE
+app.post('/reviews', (req, res) => {
+  Review.create(req.body).then((review) => {
+    console.log(review);
+    res.redirect('/');
+  }).catch((err) => {
+    console.log(err.message);
+  })
+})

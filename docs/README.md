@@ -25,3 +25,17 @@ JavaScript, HTML, CSS, Bootstrap and Documented with Docsify!
 
 # Visit the site 
 [here:]()
+
+## Simple find a perfect image Project
+
+# API calls 
+
+# Get 
+If the user uses /img and requests a theme it will  pull pictures and display
+
+# post
+If the user uses /updateImg and requests a theme it will  pull pictures and display
+
+
+# Delete
+ If the user uses /deleteImg and requests a theme it will  pull pictures and display
