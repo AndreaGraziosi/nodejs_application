@@ -1,17 +1,25 @@
 // getiing started
 const express = require('express')
-const app = express()
-
-
-// initialize mongoose
 const mongoose = require('mongoose');
-mongoose.connect('mongodb://localhost/nodejs_application', { useNewUrlParser: true }, { useUnifiedTopology: true });
+const Handlebars = require('handlebars')
+// install express-handlebars 
+var exphbs = require('express-handlebars');
+const {allowInsecurePrototypeAccess} = require('@handlebars/allow-prototype-access')
 
-//Todo insert the promise
-
+const app = express()
 
 // INITIALIZE BODY-PARSER AND ADD IT TO APP
 app.use(express.urlencoded({ extended: true }));
+app.engine('handlebars', exphbs({ defaultLayout: 'main', handlebars:allowInsecurePrototypeAccess(Handlebars)}));
+app.set('view engine', 'handlebars');
+// initialize mongoose
+
+mongoose.connect('mongodb://localhost/nodejs_application', { useNewUrlParser: true }, { useUnifiedTopology: true });
+
+
+
+//***************************
+
 // Model
 const Review = mongoose.model('Review', {
     title: String,
@@ -19,15 +27,6 @@ const Review = mongoose.model('Review', {
     description: String
 
   });
-
-// install express-handlebars 
-var exphbs = require('express-handlebars');
-
-app.engine('handlebars', exphbs({ defaultLayout: 'main' }));
-app.set('view engine', 'handlebars');
-//***************************
-
-
 
 //Routes!!
 
@@ -49,13 +48,24 @@ app.get('/reviews/new', (req, res) => {
  
 // CREATE
 app.post('/reviews', (req, res) => {
-    Review.create(req.body).then((review) => {
-      console.log(review);
-      res.redirect('/');
+  Review.create(req.body).then((review) => {
+    console.log(review)
+    res.redirect(`/reviews/${review._id}`) // Redirect to reviews/:id
+  }).catch((err) => {
+    console.log(err.message)
+  })
+})
+
+ // SHOW
+app.get('/reviews/:id', (req, res) => {
+    Review.findById(req.params.id).then((review) => {
+      res.render('reviews-show', { review: review })
     }).catch((err) => {
       console.log(err.message);
     })
   })
+
+  
   
 
 

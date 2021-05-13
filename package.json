@@ -21,6 +21,7 @@
   },
   "homepage": "https://github.com/AndreaGraziosi/nodejs_application#readme",
   "dependencies": {
+    "@handlebars/allow-prototype-access": "^1.0.5",
     "chai": "^4.3.4",
     "chai-http": "^4.3.0",
     "express": "^4.17.1",
