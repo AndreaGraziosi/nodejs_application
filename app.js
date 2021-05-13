@@ -5,6 +5,7 @@ const Handlebars = require('handlebars')
 // install express-handlebars 
 var exphbs = require('express-handlebars');
 const {allowInsecurePrototypeAccess} = require('@handlebars/allow-prototype-access')
+const methodOverride = require('method-override')
 
 const app = express()
 
@@ -12,8 +13,10 @@ const app = express()
 app.use(express.urlencoded({ extended: true }));
 app.engine('handlebars', exphbs({ defaultLayout: 'main', handlebars:allowInsecurePrototypeAccess(Handlebars)}));
 app.set('view engine', 'handlebars');
-// initialize mongoose
+// override with POST having ?_method=DELETE or ?_method=PUT
+app.use(methodOverride('_method'))
 
+// initialize mongoose
 mongoose.connect('mongodb://localhost/nodejs_application', { useNewUrlParser: true }, { useUnifiedTopology: true });
 
 
@@ -41,10 +44,10 @@ const Review = mongoose.model('Review', {
       })
   })
   
-  // NEW
+// NEW
 app.get('/reviews/new', (req, res) => {
-    res.render('reviews-new', {});
-  })
+  res.render('reviews-new', {title: "New Review"});
+})
  
 // CREATE
 app.post('/reviews', (req, res) => {
@@ -65,9 +68,23 @@ app.get('/reviews/:id', (req, res) => {
     })
   })
 
+// EDIT
+app.get('/reviews/:id/edit', (req, res) => {
+  Review.findById(req.params.id, function(err, review) {
+    res.render('reviews-edit', {review: review, title: "Edit Review"});
+  })
+})
   
-  
-
+// UPDATE
+app.put('/reviews/:id', (req, res) => {
+  Review.findByIdAndUpdate(req.params.id, req.body)
+    .then(review => {
+      res.redirect(`/reviews/${review._id}`)
+    })
+    .catch(err => {
+      console.log(err.message)
+    })
+})
 
 
 
