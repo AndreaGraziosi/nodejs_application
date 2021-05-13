@@ -1,9 +1,18 @@
 <!-- reviews-index -->
-<h1>Reviews</h1>
-<a href="/reviews/new">New Review</a>
 
-{{#each reviews}}
-  <h2><a href="/reviews/{{this._id}}">{{this.title}}</a></h2>
-  <small>{{this.gifTitle}}</small>
-{{/each}}
 
+
+<div class="container">
+  <div class="row m-5">
+      <h1>Reviews</h1>
+
+
+      <a href="/reviews/new">New Review</a>
+
+      {{#each reviews}}
+        <h2><a href="/reviews/{{this._id}}">{{this.title}}</a></h2>
+        <small>{{this.gifTitle}}</small>
+      {{/each}}
+
+  </div>
+</div>

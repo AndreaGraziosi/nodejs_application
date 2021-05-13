@@ -13,10 +13,12 @@
 
 
 ### Built with:
-``` Node.js  | handlebars  | MongoDB | TDD/BDD  Mocha Chai Testing | RESTful API ```
+``` 
+Node.js  | handlebars  | MongoDB | Express.js Mocha Chai Testing | RESTful API 
+```
 
- [This amazing API! Check out the repo](https://github.com/pmyjavec/asana.git) 
-### Languages:
+ 
+### Written in:
 ```
 JavaScript, HTML, CSS, Bootstrap and Documented with Docsify!
 ```
@@ -30,12 +32,20 @@ JavaScript, HTML, CSS, Bootstrap and Documented with Docsify!
 
 # API calls 
 
-# Get 
-If the user uses /img and requests a theme it will  pull pictures and display
+# GET
+* If the user uses /reviews/new a user can see a new review form 
 
-# post
-If the user uses /updateImg and requests a theme it will  pull pictures and display
+* If the user uses /reviews/:id a user can see a review
+
+* If a user uses /reviews/:id/edit  a user can see and edit a review
+
+# PUT
+* If a user uses /reviews/:id a user can update a review
+
+# POST
+* If a user uses /reviews they can create a new review 
 
 
-# Delete
- If the user uses /deleteImg and requests a theme it will  pull pictures and display
+# DELETE
+ * If the user uses /reviews/:id a user can delete a review
+
