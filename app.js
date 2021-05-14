@@ -1,6 +1,6 @@
 // getiing started
 const express = require('express')
-var mongoose = require('mongoose');
+const mongoose = require('mongoose');
 const Handlebars = require('handlebars')
 // install express-handlebars 
 var exphbs = require('express-handlebars');
@@ -27,6 +27,17 @@ app.use(methodOverride('_method'))
 
 // initialize mongoose
 mongoose.connect('mongodb://localhost/nodejs_application', { useNewUrlParser: true }, { useUnifiedTopology: true });
+
+//atlas
+// const MongoClient = require('mongodb').MongoClient;
+// const uri = "mongodb+srv://Andreadbmongo:123@cluster0.hta5x.mongodb.net/myFirstDatabase?retryWrites=true&w=majority";
+// const client = new MongoClient(uri, { useNewUrlParser: true, useUnifiedTopology: true });
+// client.connect(err => {
+//   const collection = client.db("test").collection("devices");
+//   // perform actions on the collection object
+//   client.close();
+// });
+
 
 //model
 const Review = mongoose.model('Review', {
