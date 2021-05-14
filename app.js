@@ -4,6 +4,8 @@ const mongoose = require('mongoose');
 const Handlebars = require('handlebars')
 // install express-handlebars 
 var exphbs = require('express-handlebars');
+
+
 const {allowInsecurePrototypeAccess} = require('@handlebars/allow-prototype-access')
 const methodOverride = require('method-override')
 const Tenor = require("tenorjs").client({
@@ -15,6 +17,7 @@ const Tenor = require("tenorjs").client({
 
 const app = express()
 
+app.use(express.static('public'));
 // INITIALIZE BODY-PARSER AND ADD IT TO APP
 app.use(express.urlencoded({ extended: true }));
 app.engine('handlebars', exphbs({ defaultLayout: 'main', handlebars:allowInsecurePrototypeAccess(Handlebars)}));
@@ -25,17 +28,14 @@ app.use(methodOverride('_method'))
 // initialize mongoose
 mongoose.connect('mongodb://localhost/nodejs_application', { useNewUrlParser: true }, { useUnifiedTopology: true });
 
-
-
-//***************************
-
-// Model
+//model
 const Review = mongoose.model('Review', {
-    title: String,
-    gifTitle: String,
-    description: String
+  title: String,
+  description: String,
+  movieTitle: String
+});
 
-  });
+const reviews = require('./controllers/reviews')(app, Review);
 
 //Routes!!
 
@@ -46,7 +46,7 @@ app.get('/reviews-gif', (req, res) => {
       term = req.query.term
   }
   // Tenor.search.Query("SEARCH KEYWORD HERE", "LIMIT HERE")
-  Tenor.Search.Query(term, "1")
+  Tenor.Search.Query(term, "15")
       .then(response => {
           // store the gifs we get back from the search
           const gifs = response;
@@ -54,70 +54,6 @@ app.get('/reviews-gif', (req, res) => {
           res.render('choose-gif', { gifs })
       }).catch(console.error);
 })
-
-
-  // INDEX
-  app.get('/', (req, res) => {
-    Review.find()
-      .then(reviews => {
-        res.render('reviews-index', { reviews: reviews });
-      })
-      .catch(err => {
-        console.log(err);
-      })
-  })
-  
-// NEW
-app.get('/reviews/new', (req, res) => {
-  res.render('reviews-new', {title: "New Review"});
-})
- 
-// CREATE
-app.post('/reviews', (req, res) => {
-  Review.create(req.body).then((review) => {
-    console.log(review)
-    res.redirect(`/reviews/${review._id}`) // Redirect to reviews/:id
-  }).catch((err) => {
-    console.log(err.message)
-  })
-})
-
- // SHOW
-app.get('/reviews/:id', (req, res) => {
-    Review.findById(req.params.id).then((review) => {
-      res.render('reviews-show', { review: review })
-    }).catch((err) => {
-      console.log(err.message);
-    })
-  })
-
-// EDIT
-app.get('/reviews/:id/edit', (req, res) => {
-  Review.findById(req.params.id, function(err, review) {
-    res.render('reviews-edit', {review: review, title: "Edit Review"});
-  })
-})
-  
-// UPDATE
-app.put('/reviews/:id', (req, res) => {
-  Review.findByIdAndUpdate(req.params.id, req.body)
-    .then(review => {
-      res.redirect(`/reviews/${review._id}`)
-    })
-    .catch(err => {
-      console.log(err.message)
-    })
-})
-// DELETE
-app.delete('/reviews/:id', function (req, res) {
-  console.log("DELETE review")
-  Review.findByIdAndRemove(req.params.id).then((review) => {
-    res.redirect('/');
-  }).catch((err) => {
-    console.log(err.message);
-  })
-})
-
 
 
 app.listen(3000, () => {

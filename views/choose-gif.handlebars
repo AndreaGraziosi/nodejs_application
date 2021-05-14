@@ -1,24 +1,26 @@
 <div class="container">
   <div class="row m-5">
 
-
-        <h1>Search for GIFS</h1>
+    <div class="container">
+        <a href="/reviews/new">New Review</a>
+        
         <form action="/reviews-gif">
         <input type="text" name="term">
-        <button type="submit">Search</button>
+        <button type="submit">Search Gifs</button>
         </form>
-
-        <ul>
+    </div>
+    <div class="container m-3">
+        
             {{#each gifs}}
         {{!-- set the data-width to whatever you want --}}
         {{!-- Note that we're using properties of the gif (id, itemurl, url) to fill in information needed to render the gif --}}
-            <li class="tenor-gif-embed" data-postid="{{this.id}}" data-share-method="host" data-width="400px"
+            <div class="tenor-gif-embed" data-postid="{{this.id}}" data-share-method="host" data-width="400px"
             data-aspect-ratio="1.2266666666666666">
             <a href="{{this.itemurl}}"></a>
-            <a href="{{this.url}}"></a></li>
+            <a href="{{this.url}}"></a></div>
             <script type="text/javascript" async src="https://tenor.com/embed.js"></script>
         {{/each}} 
-        </ul>
-
+        
+    </div>
   </div>
 </div>
