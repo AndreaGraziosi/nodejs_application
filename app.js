@@ -1,6 +1,6 @@
 // getiing started
 const express = require('express')
-const mongoose = require('mongoose');
+var mongoose = require('mongoose');
 const Handlebars = require('handlebars')
 // install express-handlebars 
 var exphbs = require('express-handlebars');
@@ -57,10 +57,8 @@ app.get('/reviews-gif', (req, res) => {
       }).catch(console.error);
 })
 
-
-app.listen(3000, () => {
-  console.log('App listening on port 3000!')
-})
+const port = process.env.PORT || 3000;
+app.listen(port) ;
 
 
 
