@@ -1,12 +1,10 @@
 ![logo](./images/icon-yoga.png)
 
-# Poses for Health
+# Leave a REVIEW!
 
-> A online guide that helps yoga practitioners find poses to assist in the treatment of various ailments.
+> a simple Node.js application where users can review images 
 
-- Create and save sequences
-- Search for list of poses to help alleviate symptoms
-- Use as a guide to plan your practice
+
 
 ## [GitHub](https://github.com/AndreaGraziosi/nodejs_application.git)
 ## [Visit the Site](#docsify)

@@ -1,13 +1,16 @@
-# Poses for Health
+# An application that allows users to review generated Gifs
 ***
-## A Web service for Yogis 
+
 
 [For more information check out the Documentation!](https://andreagraziosi.github.io/nodejs_application/#/)
 
-### Use this application to improve your practice
-> - Put together great sequences for your personal practice by accesiing lists of all possible yoga poses
-> - Add images of individual yoga poses as a visual aid to remembering the names
-> - Find the best pose based on an ailment, name or description, to address any pain you would like to address in your practice
+### This application allows users to search for a Gif 
+
+> - Write a review 
+> - Edit a review
+> - Delete a review
+> - look at a review
+
 
 ***
 
@@ -28,7 +31,7 @@ JavaScript, HTML, CSS, Bootstrap and Documented with Docsify!
 # Visit the site 
 [here:]()
 
-## Simple find a perfect image Project
+Simple user-review application usinf Node.js
 
 # API calls 
 

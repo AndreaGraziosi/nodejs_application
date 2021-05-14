@@ -11,10 +11,14 @@
 
       <a href="/reviews-gif">Find your favorite gif</a>
 
-      {{#each reviews}}
-        <h2><a href="/reviews/{{this._id}}">{{this.title}}</a></h2>
-        <small>{{this.gifTitle}}</small>
-      {{/each}}
+      <div class="row">
+        {{#each reviews}}
+          <div class="col-md-3">
+            <h2><a href="/reviews/{{this._id}}">{{this.title}}</a></h2>
+            <small>{{this.gifTitle}}</small>
+          </div>
+        {{/each}}
+      </div>
 
   </div>
 </div>

@@ -9,7 +9,7 @@ var exphbs = require('express-handlebars');
 const {allowInsecurePrototypeAccess} = require('@handlebars/allow-prototype-access')
 const methodOverride = require('method-override')
 const Tenor = require("tenorjs").client({
-  // Replace with your own key
+  
   "Key": "	5FQ3G64XWCFB", // https://tenor.com/developer/keyregistration
   "Filter": "high", // "off", "low", "medium", "high", not case sensitive
   "Locale": "en_US", // Your locale here, case-sensitivity depends on input
@@ -36,6 +36,8 @@ const Review = mongoose.model('Review', {
 });
 
 const reviews = require('./controllers/reviews')(app, Review);
+
+module.exports = app;
 
 //Routes!!
 
@@ -69,9 +71,3 @@ app.listen(3000, () => {
 
 
 
-
-// module.exports = {
-//     sayHello, area, perimeter, circleArea,
-//     insert all functions here 
-//   }
-  
