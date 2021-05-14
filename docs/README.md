@@ -1,5 +1,5 @@
 # An application that allows users to review generated Gifs
-***
+
 
 
 [For more information check out the Documentation!](https://andreagraziosi.github.io/nodejs_application/#/)
@@ -12,7 +12,7 @@
 > - look at a review
 
 
-***
+
 
 
 ### Built with:
@@ -26,7 +26,7 @@ Node.js  | handlebars  | MongoDB | Express.js Mocha Chai Testing | RESTful API
 JavaScript, HTML, CSS, Bootstrap and Documented with Docsify!
 ```
 
-***
+
 
 # Visit the site 
 [here:]()
